@@ -30,9 +30,10 @@ class autoResponse(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         #Load up the responses from text file
-        print(f'autoResponse setup complete')
+        
         self.responses = readCSV()
-        await self.bot.guilds[0].channels[3].send("MAN IS A BITCH")
+        await self.bot.guilds[0].channels[16].send("MAN IS A BITCH")
+        print(f'autoResponse setup complete')
         #set up standard Embed
 
     #check for trigger in message

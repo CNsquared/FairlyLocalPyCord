@@ -24,7 +24,7 @@ class stalking(commands.Cog):
         self.bot = bot
         self.relevantUsers = set()
         #starts of as string name of channel and is reassgined the channel object
-        self.relevantChannel = "cse-12"
+        self.relevantChannel = "google-hangouts"
 
     def peopleListeningSpotify(self) -> set:
         peopleListening = set()
@@ -58,6 +58,8 @@ class stalking(commands.Cog):
             if not member.bot:
                 self.relevantUsers.add(member)
         self.relevantChannel = channel
+
+        await self.relevantChannel.send("MAN IS A BITCH")
 
 
     #give the option to reveal deleted messages
