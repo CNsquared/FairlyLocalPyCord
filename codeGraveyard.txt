@@ -1,0 +1,24 @@
+#Buttons 
+class removeTriggerButton(discord.ui.View):
+
+    def __init__(self, autoR, ctx, trigger,response):
+        self.autoR = autoR
+        self.ctx = ctx
+        self.trigger = trigger
+        self.response = response
+
+    @discord.ui.button(label="Click me!", style=discord.ButtonStyle.success)
+    async def button_callback(self, button, interaction):
+        await self.autoR.remove_trigger(self.ctx,self.trigger)
+        await self.autoR.add_trigger(self.ctx, self.trigger, self.response) 
+        
+self.standardEmbed.set_field_at(0,name = "Override",value = f"The trigger: {trigger} already has the response {self.responses[trigger]} would you like to override it? ")
+            await ctx.respond(embed = self.standardEmbed, view=removeTriggerButton(self,ctx,trigger,response))
+            return 
+
+yesNo = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
+            if(yesNo.content == "N"):
+                return
+            elif (yesNo.content == "Y"):
+                #remove the old trigger
+                await self.remove_trigger(ctx,trigger)  
