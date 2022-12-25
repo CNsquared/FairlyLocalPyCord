@@ -10,7 +10,8 @@ cogs_list = [
     'autoResponse',
     'messageLogging',
     'stalking',
-    'misc'
+    'misc',
+    'chatBot'
 ]
 
 #Load Cogs
