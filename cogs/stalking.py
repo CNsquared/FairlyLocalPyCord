@@ -59,7 +59,7 @@ class stalking(commands.Cog):
                 self.relevantUsers.add(member)
         self.relevantChannel = channel
 
-        await self.relevantChannel.send("MAN IS A BITCH")
+        #await self.relevantChannel.send("MAN IS A BITCH")
 
 
     #give the option to reveal deleted messages
