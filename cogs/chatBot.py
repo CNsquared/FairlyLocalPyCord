@@ -8,18 +8,42 @@ class chatBot(commands.Cog):
 
     def __init__(self, bot): 
         self.bot = bot
-        self.chatbot = ChatBot("Chatpot")
+        self.chatbot : ChatBot
         self.exit_conditions = (":q", "quit", "exit","shut up")
         self.enter_conditions = (":s", "start", "enter","talk","start learning")
-        self.responding = False
-        self.messageCount = 0
+        self.responding = True
+
+     #setup
+    @commands.Cog.listener()
+    async def on_ready(self):
+        self.chatbot = ChatBot("Learning", logic_adapters=[
+            {
+                'import_path': 'chatterbot.logic.BestMatch',
+                #'default_response': 'I am sorry, but I do not understand.',
+                #'maximum_similarity_threshold': 0.5
+            }
+        ])
+        print(f'ChatBot setup complete')
+
+    @discord.slash_command()
+    async def learn(self, ctx: discord.ApplicationContext):
+
+        await ctx.respond("Learning")
+
+        async for message in ctx.channel.history(limit=5000000):
+            if message.author.bot:
+                continue
+            self.chatbot.get_response(message.content)
+            print(message.content)
+       
+
+        await ctx.respond("Done Learning")
+
 
     @commands.Cog.listener()
     async def on_message(self,message):
 
-        
-
-        if message.author == self.bot.user:
+        if message.author.bot:
             return
 
         if message.content in self.exit_conditions:
@@ -36,12 +60,18 @@ class chatBot(commands.Cog):
             print("not learning right now")
             return
 
-    
-        print(f"🪴 {self.chatbot.get_response(message.content)}") 
-        self.messageCount += 1
-        if(self.messageCount == 100):
-            self.messageCount = 0
-            self.chatbot = ChatBot("Learning")
+        response = self.chatbot.get_response(message.content)
+
+        if(str(response) == "I am sorry, but I do not understand."):
+            print(f"Didnt come up with a response for {message.content}")
+            return
+
+        if(not str(response)):
+            return
+        
+        await message.channel.send(response)
+        
+
 
 
 

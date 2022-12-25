@@ -7,7 +7,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 bot = discord.Bot(intents=discord.Intents.all(), activity=discord.Game(name='Ape Sex Leg Leg'))
 cogs_list = [
-    'autoResponse',
+    #'autoResponse',
     'messageLogging',
     'stalking',
     'misc',
