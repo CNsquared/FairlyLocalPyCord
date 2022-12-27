@@ -11,7 +11,8 @@ cogs_list = [
     'messageLogging',
     'stalking',
     'misc',
-    'chatBot'
+    'chatbot',
+    'guessWhoSaidIt'
 ]
 
 #Load Cogs

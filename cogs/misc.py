@@ -6,11 +6,6 @@ class misc(commands.Cog):
     def __init__(self, bot): 
         self.bot = bot
 
-
-
-
-
-
     #Uppercase and lowercases message
     @discord.slash_command()
     async def mock(self, ctx, message):

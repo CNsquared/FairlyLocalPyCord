@@ -22,3 +22,19 @@ yesNo = await self.bot.wait_for('message', check=lambda message: message.author 
             elif (yesNo.content == "Y"):
                 #remove the old trigger
                 await self.remove_trigger(ctx,trigger)  
+
+
+    @discord.slash_command()
+    async def learn(self, ctx: discord.ApplicationContext):
+
+        await ctx.respond("Learning")
+
+        trainer = ListTrainer(self.chatbot)
+        messages = await ctx.channel.history(limit=5000000).flatten()
+        content = [message.content for message in messages ]
+
+        content.pop(0)
+
+        trainer.train(content)
+
+        await ctx.respond("Done Learning")

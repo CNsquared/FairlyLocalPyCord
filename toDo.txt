@@ -1,7 +1,8 @@
 Sloppy code for intializing embeds - maybe create embed template class?
-Sloppy code for reaction yes or yesNo 
-    No doesnt actually mean anything can react yes after saying no
+------------------Sloppy code for reaction yes or yesNo 
+    --------------No doesnt actually mean anything can react yes after saying no
 
+low priority beecause not using autoResponse 
 replace hashmap with automatan https://github.com/WojciechMula/pyahocorasick/
 
 make bot more general
@@ -9,3 +10,5 @@ make bot more general
 delte stalking and edit stalking only looks at content and not nother parts of message
 
 add descprtions to slash commands
+
+set up logging
