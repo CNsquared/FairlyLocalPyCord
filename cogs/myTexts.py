@@ -15,10 +15,10 @@ class myTexts(commands.Cog):
 
         await ctx.respond("Reading")
 
-        messages = await ctx.channel.history( ).flatten()
+        messages = await ctx.channel.history( limit = 10000).flatten()
         await ctx.respond("Pulled Messages")
         for message in messages:
-            if(not message.author.bot and message.author.name == "cn.squared" and message.content != "" and not message.content.startswith("```")):
+            if(not message.author.bot and message.author.name == "knex." and message.content != "" and not message.content.startswith("```")):
                 writeNewMessage(message)
 
         await ctx.respond("Messages saved in csv")
@@ -30,7 +30,7 @@ def writeNewMessage(message : discord.message.Message):
     
         message.content = message.content.replace("\n"," ")
     
-        fileName = f"./cogs/myTexts/alex.csv"
+        fileName = f"./cogs/myTexts/matt.csv"
         with open(fileName, mode ='a')as file:
             #writing to the CSV file
             csvFile = csv.writer(file)
