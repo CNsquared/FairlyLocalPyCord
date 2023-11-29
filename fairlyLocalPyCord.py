@@ -9,9 +9,10 @@ bot = discord.Bot(intents=discord.Intents.all(), activity=discord.Game(name='Ape
 cogs_list = [
     #'autoResponse',
     'messageLogging',
+    'myTexts',
     'stalking',
     'misc',
-    'chatbot',
+    'chatBot',
     'guessWhoSaidIt'
 ]
 
@@ -23,6 +24,6 @@ for cog in cogs_list:
 async def hi(ctx, user):
     await ctx.respond(f"{ctx.author.mention} says hello to {user.name}!")
 
-bot.run(TOKEN)
+bot.run("MTA1NDYyNTgyNzY5NTg4NjQzNw.GJiM5y.42U9TDZkh1i9f4cV3xhtxuk-pOxRvgpZjQ2cfg")
 
 
